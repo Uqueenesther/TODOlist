@@ -8,11 +8,11 @@ const ListArray =({todos, handleDelete, handleEditClick, handleComplete, isCompl
            
             {todos.map((todo, index) =>
                  
-               <div   key={todo.id}  className="list-container">
+               <div   key={todo.id} index={index}  className="list-container">
                     <div className="list-h1">
-                         <h2 className={`${isComplete === todo.id ? "text-output": ""}`}>
+                         <h2 className={`${todo.done ? "text-output": ""}`}>
                               {todo.text}
-                              <FontAwesomeIcon className="list-icon"  icon={isComplete === todo.id ? faCheck : faList}  /> 
+                              <FontAwesomeIcon className="list-icon"  icon={ todo.done ? faCheck : faList}  /> 
                          </h2>
                     </div>
 

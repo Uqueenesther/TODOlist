@@ -18,14 +18,14 @@ const ModalBox =({showBox, setShowBox , input,  handleInputChange,handleformAdd,
                                 </div>
                           <div>
                             {!isEditing ? (
-                                    <form className='form'>
+                                    <form className='form' onSubmit={handleformAdd}>
                                             <input type="text"
                                             className="modal-input"
                                             value={input} 
                                             onChange={handleInputChange}
                                             placeholder=" enter Todo" 
                                             autoComplete="on"/>
-                                            <button  onClick={ handleformAdd}> Add</button>   
+                                            <button  onClick={()=> setShowBox(false)}> Add</button>   
                                     </form>
 
                             ):(

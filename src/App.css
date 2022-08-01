@@ -180,6 +180,7 @@ button {
   border-radius: var(--border-radius);
   box-shadow: 0 0 5px 0 black;
   margin:5px 5px 5px 5px;
+  user-select:none;
 
 }
 

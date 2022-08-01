@@ -1,7 +1,6 @@
 import React, {useEffect,useState} from 'react';
 import AddTodo from './components/AddTodo';
 import ModalBox from './components/ModalBox';
-
 import './App.css';
 import ListArray from './components/ListArray';
 
@@ -42,17 +41,20 @@ function App(){
    function handleformAdd(e){
     console.log('input' , input)
     e.preventDefault();
-    if (input !== "")
+    input === "" ? alert(" field can't be empty") && setInput("")
+    :
     setTodos([
       ...todos,
       {
        id: todos.length +1,
-       text: input.trim()
+       text: input.trim(),
+       done : false
       }
     ])
+    setInput(""); 
      console.log('todo2', todos);
     // clear out the input box
-    setInput(""); 
+   
    }
 
    function handleEditFormSubmit(e){
@@ -61,7 +63,7 @@ function App(){
    }
 
    function handleDelete(id){
-    const removeItem =todos.filter((todo)=>{
+    const removeItem = todos.filter((todo)=>{
       return todo.id !== id;
     });
     setTodos(removeItem)
@@ -71,7 +73,6 @@ function App(){
    function handleUpdateTodo(id, updatedTodo) {
     const updatedItem = todos.map((todo) =>{
       return todo.id === id ? updatedTodo : todo;
-
     });
      setIsEditing(false);
      console.log(updatedItem, 'updated');
@@ -85,14 +86,12 @@ function App(){
    }
 
    function handleComplete(id){
-     setIsComplete(id )
-   console.log(isComplete);
-   
+      const complete = todos.map((todo)=> {
+        return todo.id === id ? {...todo, done: !todo.done} : {...todo};
+      })
+      console.log(complete)
+     setTodos(complete)
    }
-
-  //  function removeModal(e){
-  //    console.log(e);
-  //  }
 
    
     return(
